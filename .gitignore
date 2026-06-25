@@ -1,0 +1,8 @@
+tmp/
+assets/products/
+assets/quero-bis/products-raw/
+assets/quero-bis/products-cutout/
+assets/quero-bis/*contact-sheet.png
+assets/quero-bis/*proof-sheet.png
+assets/quero-bis/*report.json
+assets/quero-bis/asset-manifest.json

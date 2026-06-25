@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Cardapio digital mobile da Quero Bis Sorveteria e Acai em Ouro Preto do Oeste/RO."
+    />
+    <title>Quero Bis Sorveteria e Acai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Geist:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="mobile-app" id="app">
+      <header class="app-bar" aria-label="Topo do cardapio">
+        <a class="brand-lockup" href="#topo" aria-label="Voltar ao topo">
+          <img src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
+          <span>
+            <strong>Quero Bis</strong>
+            <small>Ouro Preto do Oeste - RO</small>
+          </span>
+        </a>
+        <button class="cart-orb" type="button" data-open-cart aria-label="Abrir carrinho">
+          <span class="cart-icon" aria-hidden="true"></span>
+          <span class="cart-badge" id="topCartCount">0</span>
+        </button>
+      </header>
+
+      <section class="hero" id="topo" aria-label="Destaque Quero Bis">
+        <canvas class="sprinkle-canvas" id="sprinkleCanvas" aria-hidden="true"></canvas>
+        <div class="hero-ribbon hero-ribbon-a" aria-hidden="true"></div>
+        <div class="hero-ribbon hero-ribbon-b" aria-hidden="true"></div>
+        <div class="hero-rip" aria-hidden="true"></div>
+
+        <div class="hero-stage" aria-hidden="true">
+          <img
+            class="hero-product hero-product-cone"
+            src="assets/quero-bis/products-transparent-hd/p01-02-x6.png"
+            alt=""
+            loading="eager"
+          />
+          <img
+            class="hero-product hero-product-shake"
+            src="assets/quero-bis/products-transparent-hd/p01-03-x9.png"
+            alt=""
+            loading="eager"
+          />
+        </div>
+
+        <div class="hero-content">
+          <p class="eyebrow">Cardapio premium no celular</p>
+          <h1>Acai e sorvete em poucos toques.</h1>
+          <p>
+            Escolha, personalize, adicione ao carrinho e mande o pedido completo
+            para o WhatsApp da Quero Bis.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#produtos">Ver cardapio</a>
+            <button class="btn btn-ghost" type="button" data-open-cart>Meu pedido</button>
+          </div>
+        </div>
+
+        <div class="hero-status" aria-label="Informacoes rapidas">
+          <span>Delivery</span>
+          <span>Produtos reais</span>
+          <span>WhatsApp</span>
+        </div>
+      </section>
+
+      <section class="featured" aria-label="Destaques do dia">
+        <div class="section-title">
+          <p class="eyebrow">Destaques do dia</p>
+          <h2>Bonitos de ver, faceis de pedir</h2>
+        </div>
+        <div class="featured-grid" id="featuredRail"></div>
+      </section>
+
+      <nav class="category-dock" aria-label="Categorias">
+        <div class="category-scroller" id="categoryScroller"></div>
+      </nav>
+
+      <section class="menu-section" id="produtos" aria-label="Produtos">
+        <div class="menu-head">
+          <div class="section-title">
+            <p class="eyebrow" id="activeCategoryLabel">Todos os produtos</p>
+            <h2 id="productCountTitle">Escolha seu pedido</h2>
+          </div>
+          <label class="search-box" for="searchInput">
+            <span>Buscar produto</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Acai, taca, milk shake..."
+              autocomplete="off"
+            />
+          </label>
+        </div>
+        <div class="product-list" id="productList"></div>
+      </section>
+
+      <section class="builder-section" id="monte" aria-label="Monte do seu jeito">
+        <div class="builder-copy">
+          <p class="eyebrow">Monte do seu jeito</p>
+          <h2>Escolha a base, o sabor e os adicionais.</h2>
+          <p>
+            Perfeito para quem gosta de montar acai, taca ou copo com fruta,
+            creme, calda e crocante do jeito certo.
+          </p>
+          <button class="btn btn-primary" type="button" data-builder-product="acai-monte">
+            Montar agora
+          </button>
+        </div>
+        <div class="builder-bowl" aria-hidden="true">
+          <img src="assets/quero-bis/products-transparent-hd/p03-02-x6.png" alt="" loading="lazy" />
+        </div>
+      </section>
+
+      <section class="location-section" id="localizacao" aria-label="Localizacao">
+        <div class="map-card">
+          <p class="eyebrow">Onde fica</p>
+          <h2>Av. Daniel Comboni, Centro</h2>
+          <p>Esquina com a JK, proximo a Igreja Matriz, Ouro Preto do Oeste/RO.</p>
+          <div class="location-actions">
+            <a
+              class="btn btn-ghost"
+              href="https://www.google.com/maps/place/Quero+Bis+Sorveteria+e+A%C3%A7a%C3%AD/@-10.7184204,-62.2527108,17z"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Abrir Maps
+            </a>
+            <button class="btn btn-primary" type="button" data-open-cart>Pedir delivery</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contato" aria-label="Contato">
+        <img
+          src="assets/quero-bis/products-transparent-hd/p11-04-x10.png"
+          alt="Milk shake Quero Bis"
+          loading="lazy"
+        />
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2>Finalize pelo WhatsApp da loja.</h2>
+          <p>@sorveteriaquerobisopo</p>
+          <p>(69) 99203-1044</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <img src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis Sorveteria e Acai" />
+        <h2>Amor, carinho e alegria em forma de sorvete.</h2>
+        <p>Precos sujeitos a atualizacao pela loja.</p>
+      </footer>
+    </main>
+
+    <button class="floating-whatsapp" type="button" data-open-cart aria-label="Abrir pedido">
+      <span id="floatingCartCount">0</span>
+      Finalizar pedido
+    </button>
+
+    <div class="modal-backdrop" id="productBackdrop" hidden></div>
+    <aside
+      class="product-sheet"
+      id="productSheet"
+      aria-labelledby="productSheetTitle"
+      aria-modal="true"
+      role="dialog"
+      hidden
+    >
+      <button class="sheet-close" type="button" data-close-product aria-label="Fechar">Fechar</button>
+      <div id="productSheetContent"></div>
+    </aside>
+
+    <div class="modal-backdrop" id="cartBackdrop" hidden></div>
+    <aside
+      class="cart-sheet"
+      id="cartSheet"
+      aria-labelledby="cartTitle"
+      aria-modal="true"
+      role="dialog"
+      hidden
+    >
+      <button class="sheet-close" type="button" data-close-cart aria-label="Fechar carrinho">Fechar</button>
+      <div class="cart-header">
+        <p class="eyebrow">Carrinho</p>
+        <h2 id="cartTitle">Seu pedido</h2>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="checkout-fields">
+        <label>
+          <span>Seu nome</span>
+          <input id="customerName" type="text" placeholder="Nome para o pedido" />
+        </label>
+        <label>
+          <span>Entrega</span>
+          <select id="deliveryMode">
+            <option value="Delivery">Delivery</option>
+            <option value="Retirada no trailer">Retirada no trailer</option>
+          </select>
+        </label>
+        <label>
+          <span>Observacao</span>
+          <textarea id="orderNote" rows="3" placeholder="Endereco, troco ou observacoes"></textarea>
+        </label>
+      </div>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <a class="checkout-button" id="checkoutButton" href="#" target="_blank" rel="noreferrer">
+        Enviar pedido no WhatsApp
+      </a>
+    </aside>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
