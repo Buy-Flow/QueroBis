@@ -866,7 +866,7 @@ const products = [
   },
 ];
 
-const PRODUCT_ASSET_ROOT = "assets/quero-bis/products-transparent-hd/";
+const PRODUCT_ASSET_ROOT = "assets/quero-bis/products-web/";
 const productImageMap = {
   "acai-tradicional.png": "p03-02-x6.png",
   "acai-light.png": "p03-03-x8.png",
@@ -947,9 +947,20 @@ const productImageMap = {
 products.forEach((product) => {
   const sourceName = product.image.split("/").pop();
   if (productImageMap[sourceName]) {
-    product.image = `${PRODUCT_ASSET_ROOT}${productImageMap[sourceName]}`;
+    product.image = `${PRODUCT_ASSET_ROOT}${productImageMap[sourceName].replace(".png", ".webp")}`;
   }
 });
+
+const categoryVisuals = {
+  todos: { image: "p01-03-x9.webp", icon: "★" },
+  acai: { image: "p03-02-x6.webp", icon: "◌" },
+  tacas: { image: "p05-07-x20.webp", icon: "♢" },
+  mix: { image: "p07-10-x47.webp", icon: "+" },
+  kids: { image: "p08-03-x17.webp", icon: "☺" },
+  casquinhas: { image: "p09-05-x12.webp", icon: "▽" },
+  milkshakes: { image: "p11-04-x10.webp", icon: "▯" },
+  copos: { image: "p11-07-x17.webp", icon: "□" },
+};
 
 const state = {
   activeCategory: "todos",
@@ -1044,15 +1055,20 @@ function cartCount() {
 function renderCategories() {
   dom.categoryScroller.innerHTML = categories
     .map(
-      (category) => `
+      (category) => {
+        const visual = categoryVisuals[category.id] || categoryVisuals.todos;
+        return `
         <button
           class="category-button ${state.activeCategory === category.id ? "is-active" : ""}"
           type="button"
           data-category="${category.id}"
         >
-          ${esc(category.label)}
+          <img class="category-thumb" src="${PRODUCT_ASSET_ROOT}${esc(visual.image)}" alt="" loading="lazy" />
+          <span class="category-icon" aria-hidden="true">${esc(visual.icon)}</span>
+          <span class="category-label">${esc(category.label)}</span>
         </button>
-      `,
+      `;
+      },
     )
     .join("");
 }
@@ -1657,7 +1673,7 @@ function setupGsap() {
   if (!window.gsap) return;
   if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from(".brand-lockup, .cart-orb", { y: -12, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.05 });
+  gsap.from(".menu-orb, .delivery-pill", { y: -12, opacity: 0, duration: 0.55, ease: "power3.out", stagger: 0.05 });
   gsap.from(".hero-content > *", {
     y: 24,
     opacity: 0,
