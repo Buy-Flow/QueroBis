@@ -1150,7 +1150,7 @@ function renderProducts() {
                 ${formatPrice(productPrice(product))}
               </span>
               <button class="customize-button" type="button" data-product="${esc(product.id)}">
-                Pedir
+                Personalizar
               </button>
             </div>
           </div>
@@ -1213,123 +1213,145 @@ function renderProductSheet() {
   if (!current) return;
   const { product } = current;
   const size = product.sizes[current.sizeIndex] || product.sizes[0];
-  const removeOptions = removableIngredients(product);
   const hasFlavorChoice =
     product.ingredients.some((ingredient) => ingredient.toLowerCase().includes("sorvete")) ||
     ["tacas", "milkshakes", "casquinhas", "kids", "copos"].includes(product.category);
+  const fruitAddons = addons.filter((addon) => ["banana", "morango"].includes(addon.id));
+  const creamAddons = addons.filter((addon) =>
+    ["leite-po", "chantilly", "doce-leite", "leite-condensado"].includes(addon.id),
+  );
+  const extraAddons = addons.filter((addon) =>
+    ["nutella", "granulado", "castanha", "ovomaltine", "calda-quente"].includes(addon.id),
+  );
+  const flavorChoices = hasFlavorChoice ? flavors.slice(1, 6) : [];
+  const optionCard = (addon) => `
+    <button
+      class="builder-option ${current.addons.has(addon.id) ? "is-selected" : ""}"
+      type="button"
+      data-addon="${esc(addon.id)}"
+    >
+      <span class="builder-option-art builder-option-${esc(addon.id)}" aria-hidden="true"></span>
+      <strong>${esc(addon.label)}</strong>
+      <small>+${formatPrice(addon.price)}</small>
+    </button>
+  `;
 
   dom.productSheetContent.innerHTML = `
-    <div class="sheet-product-hero">
-      <div class="sheet-product-image">
+    <section class="customizer-hero" aria-label="Monte seu pedido">
+      <button class="customizer-back" type="button" data-close-product aria-label="Fechar personalização">Fechar</button>
+      <div class="customizer-product-float">
         <img src="${esc(product.image)}" alt="${esc(product.name)}" />
       </div>
-      <div class="sheet-product-copy">
-        <p class="eyebrow">${esc(categoryLabel(product.category))}</p>
-        <h2 id="productSheetTitle">${esc(product.name)}</h2>
-        <p>${esc(product.description)}</p>
+      <div class="customizer-title">
+        <img src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
+        <h2 id="productSheetTitle">Monte seu <span>${esc(categoryLabel(product.category))}</span></h2>
+        <p>${esc(product.name)} · ${esc(product.description)}</p>
       </div>
-    </div>
+    </section>
 
-    <div class="option-block">
-      <h3>Tamanho</h3>
-      <div class="size-options">
+    <nav class="customizer-steps" aria-label="Etapas da personalização">
+      <span class="is-active"><b>1</b>Tamanho</span>
+      <span><b>2</b>Sabores</span>
+      <span><b>3</b>Cremes</span>
+      <span><b>4</b>Extras</span>
+    </nav>
+
+    <section class="builder-panel builder-size-panel">
+      <div class="builder-panel-title">
+        <span>1</span>
+        <h3>Tamanho</h3>
+        <em>Selecionado <b>${esc(size.label.split(" ")[0])}</b></em>
+      </div>
+      <div class="builder-options builder-options-size">
         ${product.sizes
           .map(
             (item, index) => `
               <button
-                class="size-chip ${index === current.sizeIndex ? "is-selected" : ""}"
+                class="builder-option builder-size-option ${index === current.sizeIndex ? "is-selected" : ""}"
                 type="button"
                 data-size-index="${index}"
               >
-                ${esc(item.label)} · ${formatPrice(item.price)}
+                <span class="builder-cup" aria-hidden="true"></span>
+                <strong>${esc(item.label.replace(/:.*$/, ""))}</strong>
+                <small>${formatPrice(item.price)}</small>
               </button>
             `,
           )
           .join("")}
       </div>
-    </div>
-
-    <div class="option-block quantity-row">
-      <h3>Quantidade</h3>
-      <div class="stepper">
-        <button type="button" data-qty="-1" aria-label="Diminuir quantidade">-</button>
-        <span>${current.qty}</span>
-        <button type="button" data-qty="1" aria-label="Aumentar quantidade">+</button>
-      </div>
-    </div>
+    </section>
 
     ${
-      hasFlavorChoice
+      flavorChoices.length
         ? `
-          <div class="option-block">
-            <h3>Sabor</h3>
-            <select class="option-select" id="flavorSelect">
-              ${flavors
+          <section class="builder-panel">
+            <div class="builder-panel-title">
+              <span>2</span>
+              <h3>Sabores</h3>
+            </div>
+            <div class="builder-options builder-options-flavor">
+              ${flavorChoices
                 .map(
                   (flavor) => `
-                    <option value="${esc(flavor)}" ${flavor === current.flavor ? "selected" : ""}>
-                      ${esc(flavor)}
-                    </option>
-                  `,
-                )
-                .join("")}
-            </select>
-          </div>
-        `
-        : ""
-    }
-
-    <div class="option-block">
-      <h3>Adicionar algo</h3>
-      <div class="chip-grid">
-        ${addons
-          .map(
-            (addon) => `
-              <button
-                class="option-chip ${current.addons.has(addon.id) ? "is-selected" : ""}"
-                type="button"
-                data-addon="${esc(addon.id)}"
-              >
-                ${esc(addon.label)} +${formatPrice(addon.price)}
-              </button>
-            `,
-          )
-          .join("")}
-      </div>
-    </div>
-
-    ${
-      removeOptions.length
-        ? `
-          <div class="option-block">
-            <h3>Remover ingrediente</h3>
-            <div class="remove-grid">
-              ${removeOptions
-                .map(
-                  (ingredient) => `
                     <button
-                      class="remove-chip ${current.removed.has(ingredient) ? "is-selected" : ""}"
+                      class="builder-option ${current.flavor === flavor ? "is-selected" : ""}"
                       type="button"
-                      data-remove="${esc(ingredient)}"
+                      data-flavor="${esc(flavor)}"
                     >
-                      Sem ${esc(ingredient)}
+                      <span class="builder-flavor-scoop" aria-hidden="true"></span>
+                      <strong>${esc(flavor)}</strong>
                     </button>
                   `,
                 )
                 .join("")}
             </div>
-          </div>
+          </section>
         `
         : ""
     }
 
-    <div class="option-block">
-      <h3>Observação do item</h3>
+    <section class="builder-panel">
+      <div class="builder-panel-title">
+        <span>3</span>
+        <h3>Frutas e cremes</h3>
+      </div>
+      <div class="builder-options">
+        ${[...fruitAddons, ...creamAddons].map(optionCard).join("")}
+      </div>
+    </section>
+
+    <section class="builder-panel">
+      <div class="builder-panel-title">
+        <span>4</span>
+        <h3>Extras</h3>
+      </div>
+      <div class="builder-options">
+        ${extraAddons.map(optionCard).join("")}
+      </div>
+    </section>
+
+    <section class="builder-panel builder-note-panel">
+      <div class="builder-panel-title">
+        <span>+</span>
+        <h3>Observação</h3>
+      </div>
       <textarea class="notes-field" id="itemNote" rows="3" placeholder="Ex: pouca calda, separar cobertura">${esc(current.note)}</textarea>
-    </div>
+    </section>
+
+    <section class="builder-panel builder-qty-panel">
+      <div class="builder-panel-title">
+        <span>Qtd</span>
+        <h3>Quantidade</h3>
+      </div>
+      <div class="stepper">
+        <button type="button" data-qty="-1" aria-label="Diminuir quantidade">-</button>
+        <span>${current.qty}</span>
+        <button type="button" data-qty="1" aria-label="Aumentar quantidade">+</button>
+      </div>
+    </section>
 
     <div class="sheet-total">
-      <span>${esc(size.label)}</span>
+      <span>Total</span>
       <strong>${formatPrice(currentTotal())}</strong>
       <button class="add-cart-button" type="button" data-add-cart>
         Adicionar ao carrinho
@@ -1337,7 +1359,6 @@ function renderProductSheet() {
     </div>
   `;
 }
-
 function addCurrentToCart() {
   const current = state.current;
   if (!current) return;
@@ -1529,6 +1550,13 @@ function setupEvents() {
       const id = addonButton.dataset.addon;
       if (current.addons.has(id)) current.addons.delete(id);
       else current.addons.add(id);
+      renderProductSheet();
+      return;
+    }
+
+    const flavorButton = event.target.closest("[data-flavor]");
+    if (flavorButton) {
+      current.flavor = flavorButton.dataset.flavor;
       renderProductSheet();
       return;
     }
