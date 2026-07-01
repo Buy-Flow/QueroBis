@@ -1063,7 +1063,7 @@ function renderCategories() {
           type="button"
           data-category="${category.id}"
         >
-          <img class="category-thumb" src="${PRODUCT_ASSET_ROOT}${esc(visual.image)}" alt="" loading="lazy" />
+          <img class="category-thumb" src="${PRODUCT_ASSET_ROOT}${esc(visual.image)}" alt="" loading="eager" decoding="async" />
           <span class="category-icon" aria-hidden="true">${esc(visual.icon)}</span>
           <span class="category-label">${esc(category.label)}</span>
         </button>
