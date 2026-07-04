@@ -5,157 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="Cardápio digital mobile da Quero Bis Sorveteria e Açaí em Ouro Preto do Oeste/RO."
+      content="Arte promocional Quero Bis Sorveteria e Acai em formato de site responsivo."
     />
-    <title>Quero Bis Sorveteria e Açaí</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500;600;700;800&family=Geist:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <title>Quero Bis Sorveteria e Acai</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <header class="topbar">
-        <button class="icon-button" type="button" data-scroll="#categorias" aria-label="Ver categorias">
-          <span></span><span></span><span></span>
-        </button>
-        <img class="topbar-logo" src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
-        <button class="cart-button" type="button" data-open-cart aria-label="Abrir carrinho">
-          <span id="cartBadge">0</span>
-          Carrinho
-        </button>
-      </header>
-
-      <section class="hero" id="topo">
-        <div class="hero-copy">
-          <p>Delivery 11h às 23h</p>
-          <h1>Peça seu sorvete favorito</h1>
-          <span>Açaí, taças, milk shakes e sobremesas preparadas na hora.</span>
-          <button class="primary-button" type="button" data-whatsapp-direct>Pedir pelo WhatsApp</button>
-        </div>
-        <img class="hero-cone" src="assets/quero-bis/products-web/p01-02-x6.webp" alt="Sorvete Quero Bis" />
-        <img class="hero-cup" src="assets/quero-bis/products-web/p01-03-x9.webp" alt="Milk shake Quero Bis" />
-      </section>
-
-      <section class="benefits" aria-label="Benefícios">
-        <article>
-          <b>Rápido</b>
-          <span>Delivery em toda região</span>
-        </article>
-        <article>
-          <b>Fresco</b>
-          <span>Montado na hora</span>
-        </article>
-        <article>
-          <b>Do seu jeito</b>
-          <span>Com extras e observações</span>
-        </article>
-      </section>
-
-      <section class="section-block" id="categorias">
-        <div class="section-title">
-          <h2>Categorias</h2>
-          <p>Escolha uma linha do cardápio</p>
-        </div>
-        <nav class="category-list" id="categoryList" aria-label="Categorias do cardápio"></nav>
-      </section>
-
-      <section class="section-block" id="promos">
-        <div class="section-title">
-          <h2>Promoções da semana</h2>
-          <p>Combos especiais com desconto</p>
-        </div>
-        <div class="promos-grid" id="promosGrid"></div>
-      </section>
-
-      <section class="section-block" id="produtos">
-        <div class="section-title product-title-row">
-          <div>
-            <h2 id="productTitle">Produtos</h2>
-            <p id="productSubtitle">Todos os produtos</p>
-          </div>
-          <label class="search-field">
-            <span>Buscar</span>
-            <input id="searchInput" type="search" placeholder="Açaí, taça, milk..." autocomplete="off" />
-          </label>
-        </div>
-        <div class="product-list" id="productList"></div>
-      </section>
-
-      <section class="build-card" id="monte">
-        <div>
-          <p>Monte do seu jeito</p>
-          <h2>Açaí com frutas, cremes e extras</h2>
-          <span>Escolha tamanho, adicionais e observações antes de enviar o pedido.</span>
-        </div>
-        <button class="primary-button" type="button" data-build-acai>Montar açaí</button>
-      </section>
-
-      <section class="location-card" id="contato">
-        <p>Pertinho de você</p>
-        <h2>Av. Daniel Comboni - Centro</h2>
-        <span>Ouro Preto do Oeste/RO, esquina com a JK, próximo à Igreja Matriz.</span>
-        <div class="location-map" aria-label="Mapa da Quero Bis">
-          <iframe
-            title="Mapa Quero Bis Sorveteria e Açaí"
-            src="https://www.google.com/maps?q=Quero%20Bis%20Sorveteria%20e%20A%C3%A7a%C3%AD%20Av.%20Daniel%20Comboni%20Centro%20Ouro%20Preto%20do%20Oeste%20RO&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-          <div class="map-route" aria-hidden="true">
-            <span></span>
-            <b>Quero Bis</b>
-          </div>
-        </div>
-        <div class="location-info" aria-label="Informações de atendimento">
-          <strong>Aberto hoje</strong>
-          <span>10h às 23h</span>
-          <strong>Delivery</strong>
-          <span>Pedido direto no WhatsApp</span>
-        </div>
-        <div class="location-actions">
-          <a
-            href="https://www.google.com/maps/place/Quero+Bis+Sorveteria+e+A%C3%A7a%C3%AD/@-10.7184204,-62.2527108,17z"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Abrir Maps
-          </a>
-          <button type="button" data-whatsapp-direct>Pedir no WhatsApp</button>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <img src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
-        <p>Preços sujeitos à confirmação pela loja.</p>
-      </footer>
+    <main class="poster-page" aria-labelledby="pageTitle">
+      <h1 id="pageTitle" class="sr-only">Quero Bis Sorveteria e Acai</h1>
+      <figure class="poster-frame">
+        <img
+          src="assets/quero-bis-poster-original.png"
+          alt="Quero Bis Sorveteria e Acai. Peca seu sorvete favorito. A felicidade cabe em cada colher. Pedir agora pelo WhatsApp."
+          width="853"
+          height="1844"
+        />
+      </figure>
     </main>
-
-    <div class="bottom-order">
-      <button type="button" data-whatsapp-direct>Pedir agora</button>
-      <button type="button" data-open-cart>
-        <span id="bottomCartBadge">0</span>
-        Meu pedido
-      </button>
-    </div>
-
-    <dialog class="sheet" id="productDialog">
-      <form method="dialog">
-        <button class="close-button" value="cancel" aria-label="Fechar">Fechar</button>
-      </form>
-      <div id="productSheet"></div>
-    </dialog>
-
-    <dialog class="sheet cart-sheet" id="cartDialog">
-      <form method="dialog">
-        <button class="close-button" value="cancel" aria-label="Fechar carrinho">Fechar</button>
-      </form>
-      <div id="cartSheet"></div>
-    </dialog>
-
-    <script src="app.js"></script>
   </body>
 </html>
