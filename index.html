@@ -15,6 +15,35 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .hero-cone {
+        left: -52px;
+        bottom: 42px;
+        width: 164px;
+        transform: rotate(-5deg);
+      }
+
+      .hero-cup {
+        right: -58px;
+        bottom: 28px;
+        width: 178px;
+        transform: rotate(5deg);
+      }
+
+      @media (max-width: 370px) {
+        .hero-cone {
+          left: -58px;
+          bottom: 52px;
+          width: 150px;
+        }
+
+        .hero-cup {
+          right: -64px;
+          bottom: 38px;
+          width: 164px;
+        }
+      }
+    </style>
   </head>
   <body>
     <main class="app-shell">
@@ -36,8 +65,20 @@
           <span>Açaí, taças, milk shakes e sobremesas preparadas na hora.</span>
           <button class="primary-button" type="button" data-whatsapp-direct>Pedir pelo WhatsApp</button>
         </div>
-        <img class="hero-cone" src="assets/quero-bis/products-web/p01-02-x6.webp" alt="Sorvete Quero Bis" />
-        <img class="hero-cup" src="assets/quero-bis/products-web/p01-03-x9.webp" alt="Milk shake Quero Bis" />
+        <img
+          class="hero-cone"
+          src="assets/quero-bis/hero/hero-sorvete-cone.svg"
+          alt="Sorvete Quero Bis"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          class="hero-cup"
+          src="assets/quero-bis/hero/hero-milkshake-quero-bis.svg"
+          alt="Milk shake Quero Bis"
+          loading="eager"
+          decoding="async"
+        />
       </section>
 
       <section class="benefits" aria-label="Benefícios">
