@@ -15,126 +15,147 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .hero-cone {
+        left: -52px;
+        bottom: 42px;
+        width: 164px;
+        transform: rotate(-5deg);
+      }
+
+      .hero-cup {
+        right: -58px;
+        bottom: 28px;
+        width: 178px;
+        transform: rotate(5deg);
+      }
+
+      @media (max-width: 370px) {
+        .hero-cone {
+          left: -58px;
+          bottom: 52px;
+          width: 150px;
+        }
+
+        .hero-cup {
+          right: -64px;
+          bottom: 38px;
+          width: 164px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main class="phone-app">
+    <main class="app-shell">
+      <header class="topbar">
+        <button class="icon-button" type="button" data-scroll="#categorias" aria-label="Ver categorias">
+          <span></span><span></span><span></span>
+        </button>
+        <img class="topbar-logo" src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
+        <button class="cart-button" type="button" data-open-cart aria-label="Abrir carrinho">
+          <span id="cartBadge">0</span>
+          Carrinho
+        </button>
+      </header>
+
       <section class="hero" id="topo">
-        <div class="status-row" aria-hidden="true">
-          <span>9:41</span>
-          <span class="status-icons">▮▮▮  wifi  ▯</span>
-        </div>
-
-        <header class="app-header">
-          <button class="menu-button" type="button" data-scroll="#categorias" aria-label="Ver categorias">
-            <span></span><span></span><span></span>
-          </button>
-          <img class="brand-logo" src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
-          <button class="delivery-pill" type="button" data-whatsapp-direct aria-label="Pedir delivery">
-            <span>Delivery</span>
-            <strong>11h às 23h</strong>
-          </button>
-        </header>
-
-        <div class="hero-art" aria-hidden="true">
-          <span class="rip rip-left"></span>
-          <span class="rip rip-right"></span>
-          <img class="hero-icecream parallax-slow" src="assets/quero-bis/products-web/p01-02-x6.webp" alt="" />
-          <img class="hero-shake parallax-fast" src="assets/quero-bis/products-web/p01-03-x9.webp" alt="" />
-          <span class="splash splash-a"></span>
-          <span class="splash splash-b"></span>
-        </div>
-
         <div class="hero-copy">
-          <p>Peça seu</p>
-          <h1>Sorvete Favorito</h1>
-          <strong>A felicidade cabe em cada colher!</strong>
-          <span>Açaí, sorvetes, milk shakes e sobremesas para deixar seu dia mais feliz.</span>
-          <button class="whatsapp-cta" type="button" data-whatsapp-direct>
-            <span class="wa-icon">☎</span>
-            <b>Pedir agora</b>
-            <small>pelo WhatsApp</small>
-          </button>
+          <p>Delivery 11h às 23h</p>
+          <h1>Peça seu sorvete favorito</h1>
+          <span>Açaí, taças, milk shakes e sobremesas preparadas na hora.</span>
+          <button class="primary-button" type="button" data-whatsapp-direct>Pedir pelo WhatsApp</button>
         </div>
+        <img
+          class="hero-cone"
+          src="assets/quero-bis/hero/hero-sorvete-cone.svg"
+          alt="Sorvete Quero Bis"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          class="hero-cup"
+          src="assets/quero-bis/hero/hero-milkshake-quero-bis.svg"
+          alt="Milk shake Quero Bis"
+          loading="eager"
+          decoding="async"
+        />
       </section>
 
-      <section class="trust-strip" aria-label="Diferenciais">
+      <section class="benefits" aria-label="Benefícios">
         <article>
-          <b>Entrega rápida</b>
-          <span>em toda região</span>
+          <b>Rápido</b>
+          <span>Delivery em toda região</span>
         </article>
         <article>
-          <b>Produtos frescos</b>
-          <span>preparados com amor</span>
+          <b>Fresco</b>
+          <span>Montado na hora</span>
         </article>
         <article>
-          <b>Feito para você</b>
-          <span>com os melhores ingredientes</span>
+          <b>Do seu jeito</b>
+          <span>Com extras e observações</span>
         </article>
       </section>
 
-      <section class="section-block category-section" id="categorias">
-        <div class="section-heading center">
-          <span>Navegue por categorias</span>
+      <section class="section-block" id="categorias">
+        <div class="section-title">
+          <h2>Categorias</h2>
+          <p>Escolha uma linha do cardápio</p>
         </div>
         <nav class="category-list" id="categoryList" aria-label="Categorias do cardápio"></nav>
       </section>
 
-      <section class="whatsapp-banner">
-        <div class="banner-phone" aria-hidden="true">☎</div>
-        <div>
-          <h2>Peça pelo WhatsApp</h2>
-          <p>Atendimento rápido e direto pelo seu celular.</p>
+      <section class="section-block" id="promos">
+        <div class="section-title">
+          <h2>Promoções da semana</h2>
+          <p>Combos especiais com desconto</p>
         </div>
-        <button type="button" data-whatsapp-direct aria-label="Pedir pelo WhatsApp">›</button>
+        <div class="promos-grid" id="promosGrid"></div>
       </section>
 
-      <section class="section-block products-section" id="produtos">
-        <div class="store-line">
-          <span class="pin">●</span>
+      <section class="section-block" id="produtos">
+        <div class="section-title product-title-row">
           <div>
-            <strong>Ouro Preto do Oeste - RO</strong>
-            <small>Av. Daniel Comboni, Centro - Esquina com a JK</small>
+            <h2 id="productTitle">Produtos</h2>
+            <p id="productSubtitle">Todos os produtos</p>
           </div>
+          <label class="search-field">
+            <span>Buscar</span>
+            <input id="searchInput" type="search" placeholder="Açaí, taça, milk..." autocomplete="off" />
+          </label>
         </div>
-
-        <label class="search-field">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Buscar no cardápio..." autocomplete="off" />
-        </label>
-
-        <div class="filter-row" id="categoryListInline" aria-label="Filtros do cardápio"></div>
-
-        <div class="section-heading product-heading">
-          <div>
-            <small id="productSubtitle">Escolha uma categoria</small>
-            <h2 id="productTitle">Mais pedidos</h2>
-          </div>
-        </div>
-
         <div class="product-list" id="productList"></div>
       </section>
 
-      <section class="build-feature" id="monte">
-        <img src="assets/quero-bis/products-web/p03-02-x6.webp" alt="" />
+      <section class="build-card" id="monte">
         <div>
-          <small>Monte do seu jeito</small>
-          <h2>Seu açaí com frutas, cremes e extras</h2>
-          <p>Escolha tamanho, adicionais, remova ingredientes e envie o pedido pelo WhatsApp.</p>
-          <button class="pink-button" type="button" data-build-acai>Montar meu açaí</button>
+          <p>Monte do seu jeito</p>
+          <h2>Açaí com frutas, cremes e extras</h2>
+          <span>Escolha tamanho, adicionais e observações antes de enviar o pedido.</span>
         </div>
+        <button class="primary-button" type="button" data-build-acai>Montar açaí</button>
       </section>
 
       <section class="location-card" id="contato">
-        <small>Localização</small>
-        <h2>Quero Bis Sorveteria e Açaí</h2>
-        <p>Av. Daniel Comboni, Centro, Ouro Preto do Oeste - RO.</p>
-        <div class="location-map">
+        <p>Pertinho de você</p>
+        <h2>Av. Daniel Comboni - Centro</h2>
+        <span>Ouro Preto do Oeste/RO, esquina com a JK, próximo à Igreja Matriz.</span>
+        <div class="location-map" aria-label="Mapa da Quero Bis">
           <iframe
             title="Mapa Quero Bis Sorveteria e Açaí"
             src="https://www.google.com/maps?q=Quero%20Bis%20Sorveteria%20e%20A%C3%A7a%C3%AD%20Av.%20Daniel%20Comboni%20Centro%20Ouro%20Preto%20do%20Oeste%20RO&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
+          <div class="map-route" aria-hidden="true">
+            <span></span>
+            <b>Quero Bis</b>
+          </div>
+        </div>
+        <div class="location-info" aria-label="Informações de atendimento">
+          <strong>Aberto hoje</strong>
+          <span>10h às 23h</span>
+          <strong>Delivery</strong>
+          <span>Pedido direto no WhatsApp</span>
         </div>
         <div class="location-actions">
           <a
@@ -142,9 +163,9 @@
             target="_blank"
             rel="noreferrer"
           >
-            Abrir no Maps
+            Abrir Maps
           </a>
-          <button type="button" data-whatsapp-direct>Pedir agora</button>
+          <button type="button" data-whatsapp-direct>Pedir no WhatsApp</button>
         </div>
       </section>
 
@@ -155,15 +176,12 @@
     </main>
 
     <div class="bottom-order">
-      <div>
+      <button type="button" data-whatsapp-direct>Pedir agora</button>
+      <button type="button" data-open-cart>
         <span id="bottomCartBadge">0</span>
-        <strong>Meu pedido</strong>
-        <small id="bottomCartTotal">R$ 0,00</small>
-      </div>
-      <button type="button" data-open-cart>Ver carrinho ›</button>
+        Meu pedido
+      </button>
     </div>
-
-    <button class="floating-whatsapp" type="button" data-whatsapp-direct aria-label="Pedir pelo WhatsApp">☎</button>
 
     <dialog class="sheet" id="productDialog">
       <form method="dialog">
