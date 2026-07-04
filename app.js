@@ -681,9 +681,106 @@ function setupEvents() {
   });
 }
 
+const promos = [
+  {
+    id: "combo-casal",
+    title: "Combo Casal",
+    description: "2 taças médias + 1 milk shake 500ml",
+    originalPrice: 67,
+    promoPrice: 54,
+    badge: "-20%",
+    items: ["taca-ferrero", "taca-sensacao"],
+  },
+  {
+    id: "combo-familia",
+    title: "Combo Família",
+    description: "1 pote de açaí 1L + 2 cascões trufados",
+    originalPrice: 71,
+    promoPrice: 59,
+    badge: "-17%",
+    items: ["pote-acai", "cascao-trufado"],
+  },
+  {
+    id: "combo-kids",
+    title: "Combo Kids",
+    description: "2 Kids Bis + 1 Magic Shake 300ml",
+    originalPrice: 49,
+    promoPrice: 39,
+    badge: "-20%",
+    items: ["kids-bis", "magic-kids"],
+  },
+  {
+    id: "combo-verao",
+    title: "Combo Verão",
+    description: "1 açaí grande 500ml + 1 milk shake 400ml",
+    originalPrice: 47,
+    promoPrice: 40,
+    badge: "-15%",
+    items: ["acai-tradicional", "milk-tradicional"],
+  },
+];
+
+const galleryImages = [
+  { src: "p01-02-x6.webp", alt: "Sorvete de casquinha" },
+  { src: "p05-02-x10.webp", alt: "Taça Ferrero Rocher" },
+  { src: "p07-02-x6.webp", alt: "Brownie com sorvete" },
+  { src: "p08-02-x15.webp", alt: "Kids Bis" },
+  { src: "p03-02-x6.webp", alt: "Açaí Tradicional" },
+  { src: "p11-04-x10.webp", alt: "Milk Shake Brownitella" },
+  { src: "p05-07-x20.webp", alt: "Taça Pudim" },
+  { src: "p09-05-x12.webp", alt: "Cascão Tradicional" },
+];
+
+function renderPromos() {
+  const grid = document.querySelector("#promosGrid");
+  if (!grid) return;
+  grid.innerHTML = promos
+    .map((promo) => {
+      const imgs = promo.items
+        .slice(0, 2)
+        .map((pid) => {
+          const p = products.find((x) => x.id === pid);
+          return p ? `<img src="${image(p.image)}" alt="${p.name}" loading="lazy" />` : "";
+        })
+        .join("");
+      return `
+        <article class="promo-card">
+          <span class="promo-badge">${promo.badge}</span>
+          <div class="promo-images">${imgs}</div>
+          <div class="promo-content">
+            <h3>${promo.title}</h3>
+            <p>${promo.description}</p>
+            <div class="promo-pricing">
+              <span class="promo-original">${money(promo.originalPrice)}</span>
+              <span class="promo-price">${money(promo.promoPrice)}</span>
+            </div>
+            <button class="product-action" type="button" data-product="${promo.items[0]}">Pedir</button>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderGallery() {
+  const grid = document.querySelector("#galleryGrid");
+  if (!grid) return;
+  grid.innerHTML = galleryImages
+    .map(
+      (img) => `
+        <div class="gallery-item">
+          <img src="${image(img.src)}" alt="${img.alt}" loading="lazy" />
+        </div>
+      `,
+    )
+    .join("");
+}
+
 function init() {
   renderCategories();
+  renderPromos();
   renderProducts();
+  renderGallery();
   renderBadges();
   setupEvents();
 }

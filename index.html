@@ -15,6 +15,35 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .hero-cone {
+        left: -52px;
+        bottom: 42px;
+        width: 164px;
+        transform: rotate(-5deg);
+      }
+
+      .hero-cup {
+        right: -58px;
+        bottom: 28px;
+        width: 178px;
+        transform: rotate(5deg);
+      }
+
+      @media (max-width: 370px) {
+        .hero-cone {
+          left: -58px;
+          bottom: 52px;
+          width: 150px;
+        }
+
+        .hero-cup {
+          right: -64px;
+          bottom: 38px;
+          width: 164px;
+        }
+      }
+    </style>
   </head>
   <body>
     <main class="app-shell">
@@ -36,8 +65,20 @@
           <span>Açaí, taças, milk shakes e sobremesas preparadas na hora.</span>
           <button class="primary-button" type="button" data-whatsapp-direct>Pedir pelo WhatsApp</button>
         </div>
-        <img class="hero-cone" src="assets/quero-bis/products-web/p01-02-x6.webp" alt="Sorvete Quero Bis" />
-        <img class="hero-cup" src="assets/quero-bis/products-web/p01-03-x9.webp" alt="Milk shake Quero Bis" />
+        <img
+          class="hero-cone"
+          src="assets/quero-bis/hero/hero-sorvete-cone.svg"
+          alt="Sorvete Quero Bis"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          class="hero-cup"
+          src="assets/quero-bis/hero/hero-milkshake-quero-bis.svg"
+          alt="Milk shake Quero Bis"
+          loading="eager"
+          decoding="async"
+        />
       </section>
 
       <section class="benefits" aria-label="Benefícios">
@@ -61,6 +102,14 @@
           <p>Escolha uma linha do cardápio</p>
         </div>
         <nav class="category-list" id="categoryList" aria-label="Categorias do cardápio"></nav>
+      </section>
+
+      <section class="section-block" id="promos">
+        <div class="section-title">
+          <h2>Promoções da semana</h2>
+          <p>Combos especiais com desconto</p>
+        </div>
+        <div class="promos-grid" id="promosGrid"></div>
       </section>
 
       <section class="section-block" id="produtos">
@@ -90,6 +139,24 @@
         <p>Pertinho de você</p>
         <h2>Av. Daniel Comboni - Centro</h2>
         <span>Ouro Preto do Oeste/RO, esquina com a JK, próximo à Igreja Matriz.</span>
+        <div class="location-map" aria-label="Mapa da Quero Bis">
+          <iframe
+            title="Mapa Quero Bis Sorveteria e Açaí"
+            src="https://www.google.com/maps?q=Quero%20Bis%20Sorveteria%20e%20A%C3%A7a%C3%AD%20Av.%20Daniel%20Comboni%20Centro%20Ouro%20Preto%20do%20Oeste%20RO&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div class="map-route" aria-hidden="true">
+            <span></span>
+            <b>Quero Bis</b>
+          </div>
+        </div>
+        <div class="location-info" aria-label="Informações de atendimento">
+          <strong>Aberto hoje</strong>
+          <span>10h às 23h</span>
+          <strong>Delivery</strong>
+          <span>Pedido direto no WhatsApp</span>
+        </div>
         <div class="location-actions">
           <a
             href="https://www.google.com/maps/place/Quero+Bis+Sorveteria+e+A%C3%A7a%C3%AD/@-10.7184204,-62.2527108,17z"
