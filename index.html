@@ -5,22 +5,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="Arte promocional Quero Bis Sorveteria e Acai em formato de site responsivo."
+      content="Cardápio digital mobile da Quero Bis Sorveteria e Açaí em Ouro Preto do Oeste/RO."
     />
-    <title>Quero Bis Sorveteria e Acai</title>
+    <title>Quero Bis Sorveteria e Açaí</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500;600;700;800&family=Geist:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="poster-page" aria-labelledby="pageTitle">
-      <h1 id="pageTitle" class="sr-only">Quero Bis Sorveteria e Acai</h1>
-      <figure class="poster-frame">
-        <img
-          src="assets/quero-bis-poster-original.png"
-          alt="Quero Bis Sorveteria e Acai. Peca seu sorvete favorito. A felicidade cabe em cada colher. Pedir agora pelo WhatsApp."
-          width="853"
-          height="1844"
-        />
-      </figure>
+    <main class="phone-app">
+      <section class="hero" id="topo">
+        <div class="status-row" aria-hidden="true">
+          <span>9:41</span>
+          <span class="status-icons">▮▮▮  wifi  ▯</span>
+        </div>
+
+        <header class="app-header">
+          <button class="menu-button" type="button" data-scroll="#categorias" aria-label="Ver categorias">
+            <span></span><span></span><span></span>
+          </button>
+          <img class="brand-logo" src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
+          <button class="delivery-pill" type="button" data-whatsapp-direct aria-label="Pedir delivery">
+            <span>Delivery</span>
+            <strong>11h às 23h</strong>
+          </button>
+        </header>
+
+        <div class="hero-art" aria-hidden="true">
+          <span class="rip rip-left"></span>
+          <span class="rip rip-right"></span>
+          <img class="hero-icecream parallax-slow" src="assets/quero-bis/products-web/p01-02-x6.webp" alt="" />
+          <img class="hero-shake parallax-fast" src="assets/quero-bis/products-web/p01-03-x9.webp" alt="" />
+          <span class="splash splash-a"></span>
+          <span class="splash splash-b"></span>
+        </div>
+
+        <div class="hero-copy">
+          <p>Peça seu</p>
+          <h1>Sorvete Favorito</h1>
+          <strong>A felicidade cabe em cada colher!</strong>
+          <span>Açaí, sorvetes, milk shakes e sobremesas para deixar seu dia mais feliz.</span>
+          <button class="whatsapp-cta" type="button" data-whatsapp-direct>
+            <span class="wa-icon">☎</span>
+            <b>Pedir agora</b>
+            <small>pelo WhatsApp</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Diferenciais">
+        <article>
+          <b>Entrega rápida</b>
+          <span>em toda região</span>
+        </article>
+        <article>
+          <b>Produtos frescos</b>
+          <span>preparados com amor</span>
+        </article>
+        <article>
+          <b>Feito para você</b>
+          <span>com os melhores ingredientes</span>
+        </article>
+      </section>
+
+      <section class="section-block category-section" id="categorias">
+        <div class="section-heading center">
+          <span>Navegue por categorias</span>
+        </div>
+        <nav class="category-list" id="categoryList" aria-label="Categorias do cardápio"></nav>
+      </section>
+
+      <section class="whatsapp-banner">
+        <div class="banner-phone" aria-hidden="true">☎</div>
+        <div>
+          <h2>Peça pelo WhatsApp</h2>
+          <p>Atendimento rápido e direto pelo seu celular.</p>
+        </div>
+        <button type="button" data-whatsapp-direct aria-label="Pedir pelo WhatsApp">›</button>
+      </section>
+
+      <section class="section-block products-section" id="produtos">
+        <div class="store-line">
+          <span class="pin">●</span>
+          <div>
+            <strong>Ouro Preto do Oeste - RO</strong>
+            <small>Av. Daniel Comboni, Centro - Esquina com a JK</small>
+          </div>
+        </div>
+
+        <label class="search-field">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Buscar no cardápio..." autocomplete="off" />
+        </label>
+
+        <div class="filter-row" id="categoryListInline" aria-label="Filtros do cardápio"></div>
+
+        <div class="section-heading product-heading">
+          <div>
+            <small id="productSubtitle">Escolha uma categoria</small>
+            <h2 id="productTitle">Mais pedidos</h2>
+          </div>
+        </div>
+
+        <div class="product-list" id="productList"></div>
+      </section>
+
+      <section class="build-feature" id="monte">
+        <img src="assets/quero-bis/products-web/p03-02-x6.webp" alt="" />
+        <div>
+          <small>Monte do seu jeito</small>
+          <h2>Seu açaí com frutas, cremes e extras</h2>
+          <p>Escolha tamanho, adicionais, remova ingredientes e envie o pedido pelo WhatsApp.</p>
+          <button class="pink-button" type="button" data-build-acai>Montar meu açaí</button>
+        </div>
+      </section>
+
+      <section class="location-card" id="contato">
+        <small>Localização</small>
+        <h2>Quero Bis Sorveteria e Açaí</h2>
+        <p>Av. Daniel Comboni, Centro, Ouro Preto do Oeste - RO.</p>
+        <div class="location-map">
+          <iframe
+            title="Mapa Quero Bis Sorveteria e Açaí"
+            src="https://www.google.com/maps?q=Quero%20Bis%20Sorveteria%20e%20A%C3%A7a%C3%AD%20Av.%20Daniel%20Comboni%20Centro%20Ouro%20Preto%20do%20Oeste%20RO&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="location-actions">
+          <a
+            href="https://www.google.com/maps/place/Quero+Bis+Sorveteria+e+A%C3%A7a%C3%AD/@-10.7184204,-62.2527108,17z"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Abrir no Maps
+          </a>
+          <button type="button" data-whatsapp-direct>Pedir agora</button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <img src="assets/quero-bis/brand/logo-quero-bis.png" alt="Quero Bis" />
+        <p>Preços sujeitos à confirmação pela loja.</p>
+      </footer>
     </main>
+
+    <div class="bottom-order">
+      <div>
+        <span id="bottomCartBadge">0</span>
+        <strong>Meu pedido</strong>
+        <small id="bottomCartTotal">R$ 0,00</small>
+      </div>
+      <button type="button" data-open-cart>Ver carrinho ›</button>
+    </div>
+
+    <button class="floating-whatsapp" type="button" data-whatsapp-direct aria-label="Pedir pelo WhatsApp">☎</button>
+
+    <dialog class="sheet" id="productDialog">
+      <form method="dialog">
+        <button class="close-button" value="cancel" aria-label="Fechar">Fechar</button>
+      </form>
+      <div id="productSheet"></div>
+    </dialog>
+
+    <dialog class="sheet cart-sheet" id="cartDialog">
+      <form method="dialog">
+        <button class="close-button" value="cancel" aria-label="Fechar carrinho">Fechar</button>
+      </form>
+      <div id="cartSheet"></div>
+    </dialog>
+
+    <script src="app.js"></script>
   </body>
 </html>
