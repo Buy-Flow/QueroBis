@@ -222,6 +222,7 @@ const state = {
 
 const dom = {
   categoryList: document.querySelector("#categoryList"),
+  categoryListInline: document.querySelector("#categoryListInline"),
   productList: document.querySelector("#productList"),
   productTitle: document.querySelector("#productTitle"),
   productSubtitle: document.querySelector("#productSubtitle"),
@@ -232,6 +233,7 @@ const dom = {
   cartSheet: document.querySelector("#cartSheet"),
   cartBadge: document.querySelector("#cartBadge"),
   bottomCartBadge: document.querySelector("#bottomCartBadge"),
+  bottomCartTotal: document.querySelector("#bottomCartTotal"),
 };
 
 function money(value) {
@@ -275,6 +277,7 @@ function filteredProducts() {
 
 function renderCategories() {
   dom.categoryList.innerHTML = categories
+    .filter((category) => category.id !== "todos")
     .map(
       (category) => `
         <button class="category-card ${state.category === category.id ? "is-active" : ""}" type="button" data-category="${category.id}">
@@ -284,6 +287,18 @@ function renderCategories() {
       `,
     )
     .join("");
+
+  if (dom.categoryListInline) {
+    dom.categoryListInline.innerHTML = categories
+      .map(
+        (category) => `
+          <button class="filter-chip ${state.category === category.id ? "is-active" : ""}" type="button" data-category="${category.id}">
+            ${category.label}
+          </button>
+        `,
+      )
+      .join("");
+  }
 }
 
 function renderProducts() {
@@ -322,8 +337,9 @@ function renderProducts() {
 
 function renderBadges() {
   const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
-  dom.cartBadge.textContent = String(count);
-  dom.bottomCartBadge.textContent = String(count);
+  if (dom.cartBadge) dom.cartBadge.textContent = String(count);
+  if (dom.bottomCartBadge) dom.bottomCartBadge.textContent = String(count);
+  if (dom.bottomCartTotal) dom.bottomCartTotal.textContent = money(cartTotal());
 }
 
 function openProduct(productId) {
@@ -679,6 +695,14 @@ function setupEvents() {
       if (link) link.href = whatsappLink();
     }
   });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      document.documentElement.style.setProperty("--scroll-y", `${Math.min(window.scrollY, 420)}px`);
+    },
+    { passive: true },
+  );
 }
 
 const promos = [
